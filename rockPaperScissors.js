@@ -2,11 +2,15 @@ let computerChoiceBase =  Math.floor(Math.random() * 100) + 1;
 let userRPS = prompt("Rock, paper, or scissors?");
 let userChoice = userRPS.toLowerCase();
 let computerChoice = getComputerChoice();
+let userWins;
+let computerWins;
 
 function getUserChoice() {
     if (userRPS != null) {
         return userChoice;
     }
+
+    else alert("Oopsie woopsie! You didn't type rock, paper, or scissors!")
 }
 
 function getComputerChoice() {
