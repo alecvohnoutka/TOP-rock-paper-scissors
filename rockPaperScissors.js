@@ -1,7 +1,7 @@
 let computerChoiceBase =  Math.floor(Math.random() * 100) + 1;
 let userRPS = prompt("Rock, paper, or scissors?");
 let userChoice = userRPS.toLowerCase();
-let computerChoice;
+let computerChoice = getComputerChoice();
 
 function getUserChoice() {
     if (userRPS != null) {
@@ -23,29 +23,33 @@ function getComputerChoice() {
 }
 
 function playRound(){
+    let userChoice = userRPS.toLowerCase();
+    let computerChoice = getComputerChoice();
     let resultText;
-    if (userChoice === "rock" && getComputerChoice() === "paper") {
-        resultText = "You lose! Paper covers rock.";
-    }
-    else if (userChoice === "rock" && getComputerChoice() === "scissors") {
-        resultText = "You win! Rock beats scissors.";
-    }
-    else if (userChoice === "paper" && getComputerChoice() === "rock") {
-        resultText = "You win! Paper covers rock.";
-    }
-    else if (userChoice === "paper" && getComputerChoice() === "scissors") {
-        resultText = "You lose! Scissors cuts paper.";
-    }
-    else if (userChoice === "scissors" && getComputerChoice() === "rock") {
-        resultText = "You lose! Rock beats scissors.";
-    }
-    else if (userChoice === "scissors" && getComputerChoice() === "paper") {
-        resultText = "You win! Scissors cuts paper.";
-    }
-    else {userChoice === getComputerChoice();
+    if (userChoice === computerChoice) {
         resultText = "It's a tie!";
     }
+    else if (userChoice === "rock" && computerChoice === "paper") {
+        resultText = "You lose! Paper covers rock.";
+    }
+    else if (userChoice === "rock" && computerChoice === "scissors") {
+        resultText = "You win! Rock beats scissors.";
+    }
+    else if (userChoice === "paper" && computerChoice === "rock") {
+        resultText = "You win! Paper covers rock.";
+    }
+    else if (userChoice === "paper" && computerChoice === "scissors") {
+        resultText = "You lose! Scissors cuts paper.";
+    }
+    else if (userChoice === "scissors" && computerChoice === "rock") {
+        resultText = "You lose! Rock beats scissors.";
+    }
+    else if (userChoice === "scissors" && computerChoice === "paper") {
+        resultText = "You win! Scissors cuts paper.";
+    }
+    else resultText = "Oopsie woopsie! We have a pwobwem on our hands OwO";
+
     return resultText;
 }
 
-console.log(playRound())
+console.log(userChoice, computerChoice, playRound())
