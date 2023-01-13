@@ -1,5 +1,71 @@
 let resultText = 0;
 let errorText = "You better fix this, bucko, otherwise I'm gonna sell your pokemon cards";
+function gameOverScoreChecker(){
+    if (game() === "SCORE: You - 5  Computer - 0") {
+        return "You beat the computer! You must be very intelligent if you bested the machine.";
+    }
+    else if (game() === "SCORE: You - 4  Computer - 0") {
+        return "You beat the computer! You must be very intelligent if you bested the machine.";
+    }
+    else if (game() === "SCORE: You - 4  Computer - 1") {
+        return "You beat the computer! You must be very intelligent if you bested the machine.";
+    }
+    else if (game() === "SCORE: You - 3  Computer - 0") {
+        return "You beat the computer! You must be very intelligent if you bested the machine.";
+    }
+    else if (game() === "SCORE: You - 3  Computer - 1") {
+        return "You beat the computer! You must be very intelligent if you bested the machine.";
+    }
+    else if (game() === "SCORE: You - 3  Computer - 2") {
+        return "You beat the computer! You must be very intelligent if you bested the machine.";
+    }
+    else if (game() === "SCORE: You - 2  Computer - 0") {
+        return "You beat the computer! You must be very intelligent if you bested the machine.";
+    }
+    else if (game() === "SCORE: You - 2  Computer - 1") {
+        return "You beat the computer! You must be very intelligent if you bested the machine.";
+    }
+    else if (game() === "SCORE: You - 1  Computer - 0") {
+        return "You beat the computer! Just barely. Sheesh. That game was exhilarating.";
+    }
+    else if (game() === "SCORE: You - 0  Computer - 5") {
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
+    }
+    else if (game() === "SCORE: You - 0  Computer - 4") {
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
+    }
+    else if (game() === "SCORE: You - 1  Computer - 4") {
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
+    }
+    else if (game() === "SCORE: You - 0  Computer - 3") {
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
+    }
+    else if (game() === "SCORE: You - 1  Computer - 3") {
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
+    }
+    else if (game() === "SCORE: You - 2  Computer - 3") {
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
+    }
+    else if (game() === "SCORE: You - 1  Computer - 2") {
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
+    }
+    else if (game() === "SCORE: You - 0  Computer - 2") {
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
+    }
+    else if (game() === "SCORE: You - 0  Computer - 1") {
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
+    }
+    else if (game() === "SCORE: You - 0  Computer - 0") {
+        return "It's a tie! The best result in all of sports. I love paying a ton of money to see a good tie.";
+    }
+    else if (game() === "SCORE: You - 1  Computer - 1") {
+        return "It's a tie! The best result in all of sports. I love paying a ton of money to see a good tie.";
+    }
+    else if (game() === "SCORE: You - 2  Computer - 2") {
+        return "It's a tie! The best result in all of sports. I love paying a ton of money to see a good tie.";
+    }
+    else return "How the hell did you manage to do this?"
+}
 
 function game(){
     let userScore = 0;
@@ -112,23 +178,7 @@ function game(){
             console.log(currentScore);
         }
         else if (i === 4) {
-            console.log("entry flag fired");
-            console.log(userWins);
-            function gameOverScoreChecker(userWins, computerWins){
-                if (userWins > computerWins) {
-                    return "You beat the computer! You must be very intelligent if you bested the machine.";
-                }
-                else if (userWins < computerWins) {
-                    return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
-                }
-                else if (userWins === computerWins) {
-                    return "It's a tie! The best result in all of sports. I love paying a ton of money to see a good tie."
-                }
-                else return "How the hell did you manage to do this?"
-            }
-            let gameOverText = gameOverScoreChecker()
-            console.log("exit flag fired");
-            return gameOverText
+            return currentScore;
         }
         else return errorText
     }
