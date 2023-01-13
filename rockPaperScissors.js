@@ -2,14 +2,13 @@ let computerChoiceBase =  Math.floor(Math.random() * 100) + 1;
 let userRPS = prompt("Rock, paper, or scissors?");
 let userChoice = userRPS.toLowerCase();
 let computerChoice = getComputerChoice();
-let resultText = playRound(userChoice, computerChoice);
+let resultText = 0;
+let userWins = 0;
+let computerWins = 0;
 let userScore = userWinCounter();
 let computerScore = computerWinCounter();
-
-// when user wins a game, add 1 to userWins
-// when computer wins a game, add 1 to userWins
-// count wins via
-//
+let gameOverText = gameOverScoreChecker();
+let currentScore = ("You: " + (userScore) + "  Computer: " + (computerScore));
 
 function getUserChoice() {
     let userRPS = prompt("Rock, paper, or scissors?");
@@ -33,90 +32,101 @@ function getComputerChoice() {
     return computerRPS;
 }
 
-function playRound(userChoice, computerChoice){
-    if (userChoice === "rock" && computerChoice === "paper") {
-        return "You lose! Paper covers rock.";
-    }
-    else if (userChoice === "rock" && computerChoice === "scissors") {
-        return "You win! Rock beats scissors.";
-    }
-    else if (userChoice === "paper" && computerChoice === "rock") {
-        return "You win! Paper covers rock.";
-    }
-    else if (userChoice === "paper" && computerChoice === "scissors") {
-        return "You lose! Scissors cuts paper.";
-    }
-    else if (userChoice === "scissors" && computerChoice === "rock") {
-        return "You lose! Rock beats scissors.";
-    }
-    else if (userChoice === "scissors" && computerChoice === "paper") {
-        return "You win! Scissors cuts paper.";
-    }
-    else if (userChoice === computerChoice) {
-        return "It's a tie!";
-    }
-    else return "Oopsie woopsie! We have a pwobwem on our hands OwO";
-}
-
 function userWinCounter(){
-    let userWins = 0;
+    let userCounter = userWins;
     if (resultText === "You win! Rock beats scissors.") {
-        userWins++;
+        userCounter++;
+        console.log("userCounter:" + userCounter);
     }
     else if (resultText === "You win! Paper covers rock.") {
-        userWins++;
+        userCounter++;
+        console.log("userCounter:" + userCounter);
     }
     else if (resultText === "You win! Scissors cuts paper.") {
-        userWins++;
+        userCounter++;
+        console.log("userCounter:" + userCounter);
     }
-    else userWins;
-    return userWins
+    else userCounter;
+        console.log("userCounter:" + userCounter);
+    return userCounter
 }
 
 function computerWinCounter(){
-    let computerWins = 0;
-    if (resultText === "You lose! Paper covers rock.") {
-        computerWins++;
+    let computerCounter = computerWins;
+    if (resultText === "You lose! Rock is covered by paper.") {
+        computerCounter++;
+        console.log("computerCounter:" + computerCounter);
     }
-    else if (resultText === "You lose! Scissors cuts paper.") {
-        computerWins++;
+    else if (resultText === "You lose! Paper is cut by scissors.") {
+        computerCounter++;
+        console.log("computerCounter:" + computerCounter);
     }
-    else if (resultText === "You lose! Rock beats scissors.") {
-        computerWins++;
+    else if (resultText === "You lose! Scissors is beaten by rock.") {
+        computerCounter++;
+        console.log("computerCounter:" + computerCounter);
     }
-    else computerWins;
-    return computerWins
+    else computerCounter;
+        console.log("computerCounter:" + computerCounter);
+    return computerCounter
 }
 
-function finalScore(userWins, computerWins){
-    let finalScoreText;
+function gameOverScoreChecker(userWins, computerWins){
     if (userWins > computerWins) {
-        finalScoreText = "You beat the computer! You must be very intelligent to best the machine.";
+        return "You beat the computer! You must be very intelligent if you bested the machine.";
     }
     else if (userWins < computerWins) {
-        finalScoreText = "You lost! The computer passes the Turing Test and gets to marry your mother! Good luck having a computer as a father."
+        return "You lost! The computer passed the Turing Test and gets to take over your pitiful corporeal being! Damn."
     }
     else if (userWins === computerWins) {
-        finalScoreText = "It's a tie! The best result in all of sports. I love paying a ton of money to see a good tie."
+        return "It's a tie! The best result in all of sports. I love paying a ton of money to see a good tie."
     }
-    else finalScoreText = "How the hell did you manage to do this?"
-
-    return finalScoreText;
+    else return "How the hell did you manage to do this?"
 }
 
 function game(){
     for (let i = 0; i < 5; i++) {
+        let userWins = 0;
+        let computerWins = 0;
         if (i < 5) {
-            playRound(userChoice, computerChoice);
+            function playRound(userChoice, computerChoice){
+                if (userChoice === "rock" && computerChoice === "paper") {
+                    return "You lose! Rock is covered by paper.";
+                }
+                else if (userChoice === "rock" && computerChoice === "scissors") {
+                    return "You win! Rock beats scissors.";
+                }
+                else if (userChoice === "paper" && computerChoice === "rock") {
+                    return "You win! Paper covers rock.";
+                }
+                else if (userChoice === "paper" && computerChoice === "scissors") {
+                    return "You lose! Paper is cut by scissors.";
+                }
+                else if (userChoice === "scissors" && computerChoice === "rock") {
+                    return "You lose! Scissors is beaten by rock.";
+                }
+                else if (userChoice === "scissors" && computerChoice === "paper") {
+                    return "You win! Scissors cuts paper.";
+                }
+                else if (userChoice === computerChoice) {
+                    return "It's a tie!";
+                }
+                else return "Oopsie woopsie! We have a pwobwem on our hands OwO";
+            }
+            let userRPS = prompt("Rock, paper, or scissors?");
+            let userChoice = userRPS.toLowerCase();
+            let computerChoice = getComputerChoice();
+            let userScore = userWinCounter();
+            let computerScore = computerWinCounter();
+            let resultText = playRound(userChoice, computerChoice);
+            console.log(resultText);
             console.log(currentScore);
+            console.log(("i =") + i);
         }
-        else {
-            console.log(finalScoreText);
-     }
-}
+        else if (i === 5) {
+            gameOverText = gameOverScoreChecker();
+        }
+        else return gameOverText
+    }
 }
 
-let currentScore = ("You: " + (userScore) + "  Computer: " + (computerScore));
-
-console.log(playRound(userChoice, computerChoice))
-console.log(currentScore)
+console.log(game(), userWins, computerWins)
